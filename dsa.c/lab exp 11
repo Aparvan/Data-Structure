@@ -20,8 +20,11 @@ void enqueue(int value)
         temp->next = NULL;
         if (rear == NULL)
         front = rear = temp;
-        else
-        rear->next = temp;
+        else{
+            rear->next = temp;
+            rear = temp;
+        }
+        
         printf("Element %d enqueue in the queue !!\n", value);
     }
 }
@@ -80,7 +83,7 @@ int main()
     system("Cls");
     while (1)
     {
-        printf("1. Enqueue\n");
+        printf("1. Enqueue\n"); 
         printf("2. Dequeue\n");
         printf("3. Peek\n");
         printf("4. Display\n");
