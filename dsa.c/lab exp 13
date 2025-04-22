@@ -1,0 +1,122 @@
+include<stdio.h>
+#include<stdlib.h>
+#define MAX 100
+int tree[MAX];
+int size=0;
+void initialize(){
+    for(int i=size;i<MAX;i++){
+        tree[i] = -1;
+    }
+}
+void insert(int n){
+    for(int i=0;i<n;i++){
+        scanf("%d",&tree[size++]);
+    }
+}
+void preorder(int root){
+    if(tree[root]==-1)
+    return;
+    printf("%d ",tree[root]);
+    preorder(2 * root + 1); // Traverse left child
+    preorder(2 * root + 2); // Traverse right child
+}
+void inorder(int root){
+    if(tree[root]==-1)
+    return;
+    printf("%d ",tree[root]);
+    inorder(2 * root + 1); // Traverse left child
+    inorder(2 * root + 2); // Traverse right child
+}
+void postorder(int root){
+    if(tree[root]==-1)
+    return;
+    printf("%d ",tree[root]);
+    postorder(2 * root + 1); // Traverse left child
+    postorder(2 * root + 2); // Traverse right child
+}
+int search(int root,int target){ //search element in BT in level order.
+    for(int i=0;i<size;i++){
+        if (tree[root] == target)
+            return i;
+        }
+        return -1;
+    }
+    void delete(int val,int root){
+        int i=search(val,0);
+        if(i!=-1){
+            tree[i]=tree[size-1];
+            tree[size-1]=-1;
+            size--;
+            printf("Element deleted successfully.\n");
+        }
+        else{
+            printf("Element not found.\n");
+        }
+        }
+int main(){
+    int n,choice,value,index;
+    initialize();
+    while(1){
+        printf("1.insert\n");
+        printf("2. Preorder\n");
+        printf("3. inorder\n");
+        printf("4. Postorder\n");
+        printf("5. search\n");
+        printf("6. delete\n");
+        printf("7. Exit\n");
+        printf("Enter choice:");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+            printf("Enter value of N:");
+            scanf("%d",&n);
+            insert(n);
+            break;
+            case 2:
+            preorder(0); // Traverse the tree in preorder
+            break;
+            case 3:
+            inorder(0);
+            break;
+            case 4:
+            postorder(0);
+            break;
+            case 5:
+            printf("Enter the value:");
+            scanf("%d",&value);
+            index=search(value,0);
+            if(index!=-1)
+            printf("Found !!!\n");
+            else
+            printf("Not Found\n");
+            break;
+            case 6:
+            printf("Enter Element to delete:");
+            scanf("%d",&delete);
+            delete(value,0);
+            break;
+            case 7:
+            exit(0);
+            default:
+            printf("Invalid choice\n");
+        }
+    }
+    printf("Enter the value of N: ");
+    scanf("%d",&n);
+    initialize();
+    insert(n); 
+    delete(20,0);
+    printf("Preorder traversal of the tree:\n");
+    preorder(0); // Start preorder traversal from root
+    printf("\n"); // Print a newline before inorder traversal 
+    inorder(0);     
+    printf("\n"); // Print a newline after traversals    
+    int s=search(190,0);
+    if (s != -1) 
+        printf("\nElement found:"); 
+        else
+        printf("\nElement not found:");
+    return 0;
+}
+
+ 
